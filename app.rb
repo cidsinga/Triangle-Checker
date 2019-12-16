@@ -1,38 +1,18 @@
 require('sinatra')
     require('sinatra/reloader')
     require('./lib/triangle')
+    require('pry')
     also_reload('lib/**/*.rb')
+
     get('/') do
-
-    end
-    get('/triangle') do
-
+      erb(:triangle)
     end
 
-    get('/triangle/new') do
-
-    end
-
-    get('/triangle/:id') do
-
-    end
     post('/triangle') do
-
+      side_a = params[:side_a].to_i
+      side_b = params[:side_b].to_i
+      side_c = params[:side_c].to_i
+      triangle = Triangle.new()
+      @results = triangle.triangle_calc(side_a,side_b,side_c)
+      erb(:this_triangle)
     end
-
-    get('/triangle/:id/edit') do
-
-    end
-
-    patch('/triangle/:id') do
-
-    end
-
-    delete('/triangle/:id') do
-
-    end
-
-    get('/custom_route') do
-
-    end
-    
